@@ -208,8 +208,8 @@ function Profile() {
 												rules={{
 													validate: (value) =>
 														value === '' ||
-														value.length > 5 ||
-														'Password length is more than 5',
+														value.length > 7 ||
+														'Password length should be atleast 8',
 												}}
 												render={({ field }) => (
 													<TextField
@@ -225,7 +225,7 @@ function Profile() {
 														)}
 														helperText={
 															errors.password
-																? 'Password length is more than 5'
+																? 'Password length should be atleast 8'
 																: ''
 														}
 														{...field}
@@ -241,8 +241,8 @@ function Profile() {
 												rules={{
 													validate: (value) =>
 														value === '' ||
-														value.length > 5 ||
-														'Confirm Password length is more than 5',
+														value.length > 7 ||
+														'Confirm Password length should be atleast 8',
 												}}
 												render={({ field }) => (
 													<TextField
@@ -258,7 +258,7 @@ function Profile() {
 														)}
 														helperText={
 															errors.password
-																? 'Confirm Password length is more than 5'
+																? 'Confirm Password length should be atleast 8'
 																: ''
 														}
 														{...field}

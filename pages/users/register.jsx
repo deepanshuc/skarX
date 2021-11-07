@@ -155,7 +155,7 @@ export default function Register() {
 							defaultValue=""
 							rules={{
 								required: true,
-								minLength: 6,
+								minLength: 8,
 							}}
 							render={({ field }) => (
 								<TextField
@@ -169,7 +169,7 @@ export default function Register() {
 										errors.password
 											? errors.password.type ===
 											  'minLength'
-												? 'Password length is more than 5'
+												? 'Password length should be atleast 8'
 												: 'Password is required'
 											: ''
 									}
@@ -185,7 +185,7 @@ export default function Register() {
 							defaultValue=""
 							rules={{
 								required: true,
-								minLength: 6,
+								minLength: 8,
 							}}
 							render={({ field }) => (
 								<TextField
@@ -199,7 +199,7 @@ export default function Register() {
 										errors.confirmPassword
 											? errors.confirmPassword.type ===
 											  'minLength'
-												? 'Confirm Password length is more than 5'
+												? 'Password length should be atleast 8'
 												: 'Confirm  Password is required'
 											: ''
 									}

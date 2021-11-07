@@ -318,7 +318,7 @@ export default function Layout({ title, description, children }) {
 									</Menu>
 								</>
 							) : (
-								<NextLink href="users/login" passHref>
+								<NextLink href="/users/login" passHref>
 									<Link>
 										<Typography component="span">
 											Login

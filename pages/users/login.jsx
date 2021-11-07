@@ -23,6 +23,7 @@ import Slide from '@material-ui/core/Slide';
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function Login() {
 	const {
+		/*	setValue,*/
 		handleSubmit,
 		control,
 		formState: { errors },
@@ -66,7 +67,6 @@ export default function Login() {
 			<form
 				onSubmit={handleSubmit(submitHandler)}
 				className={classes.form}
-				autoComplete="off"
 			>
 				<Typography component="h1" variant="h1">
 					Login
@@ -109,7 +109,7 @@ export default function Login() {
 							defaultValue=""
 							rules={{
 								required: true,
-								minLength: 6,
+								minLength: 8,
 							}}
 							render={({ field }) => (
 								<TextField
@@ -123,7 +123,7 @@ export default function Login() {
 										errors.password
 											? errors.password.type ===
 											  'minLength'
-												? 'Password length is more than 5'
+												? 'Password length should be atleast 8'
 												: 'Password is required'
 											: ''
 									}
