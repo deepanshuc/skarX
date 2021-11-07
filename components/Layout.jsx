@@ -43,7 +43,8 @@ export default function Layout({ title, description, children }) {
 	const router = useRouter();
 	const { state, dispatch } = useContext(Store);
 	const { darkMode, userInfo } = state;
-	const theme = createTheme({
+
+	const themeLight = createTheme({
 		typography: {
 			h1: {
 				fontSize: '1.6rem',
@@ -57,15 +58,42 @@ export default function Layout({ title, description, children }) {
 			},
 		},
 		palette: {
-			type: darkMode ? 'dark' : 'light',
 			primary: {
-				main: '#f0c000',
+				main: '#FFC68A',
 			},
 			secondary: {
-				main: '#208080',
+				main: '#FFC68A',
 			},
 		},
 	});
+
+	const themeDark = createTheme({
+		typography: {
+			h1: {
+				fontSize: '1.6rem',
+				fontWeight: 400,
+				margin: '1rem 0',
+			},
+			h2: {
+				fontSize: '1.4rem',
+				fontWeight: 400,
+				margin: '1rem 0',
+			},
+		},
+		palette: {
+			type: 'dark',
+			background: {
+				default: '#121212',
+			},
+			primary: {
+				main: '#FFC68A',
+			},
+			secondary: {
+				main: '#FFC68A',
+			},
+		},
+	});
+
 	const classes = useStyles();
 
 	const [sidbarVisible, setSidebarVisible] = useState(false);
@@ -120,7 +148,7 @@ export default function Layout({ title, description, children }) {
 	};
 	const loginMenuCloseHandler = (e, redirect) => {
 		setAnchorEl(null);
-		if (redirect) {
+		if (redirect && redirect.includes('backdropClick') == false) {
 			router.push(redirect);
 		}
 	};
@@ -138,7 +166,7 @@ export default function Layout({ title, description, children }) {
 					<meta name="description" content={description}></meta>
 				)}
 			</Head>
-			<ThemeProvider theme={theme}>
+			<ThemeProvider theme={darkMode ? themeDark : themeLight}>
 				<CssBaseline />
 				<AppBar position="static" className={classes.navbar}>
 					<Toolbar className={classes.toolbar}>
@@ -207,6 +235,7 @@ export default function Layout({ title, description, children }) {
 							<form
 								onSubmit={submitHandler}
 								className={classes.searchForm}
+								autoComplete="off"
 							>
 								<InputBase
 									name="query"

@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { useRouter } from 'next/router';
-import React, { useContext } from 'react';
+import React /*{ useContext }*/ from 'react';
 import Layout from '../components/Layout';
 import {
 	getBrands,
@@ -23,8 +23,8 @@ import {
 } from '../models/Product';
 import useStyles from '../utils/styles';
 import ProductItem from '../components/ProductItem';
-import { Store } from '../utils/store';
-import axios from 'axios';
+//import { Store } from '../utils/store';
+//import axios from 'axios';
 //import Rating from '@material-ui/lab/Rating';
 import { Pagination } from '@material-ui/lab';
 
@@ -100,7 +100,7 @@ export default function Search(props) {
 		filterSearch({ price: e.target.value });
 	};
 
-	const { state, dispatch } = useContext(Store);
+	//const { state, dispatch } = useContext(Store);
 	return (
 		<Layout title="Search">
 			<Grid className={classes.mt1} container spacing={1}>

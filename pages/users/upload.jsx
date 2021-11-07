@@ -120,7 +120,7 @@ function UploadEdit({ params }) {
 	};
 
 	return (
-		<Layout title={`Edit Product ${productId}`}>
+		<Layout title={`Upload Document`}>
 			<Grid container spacing={1}>
 				<Grid item md={9} xs={12}>
 					<Card className={classes.section}>
@@ -136,6 +136,7 @@ function UploadEdit({ params }) {
 										<Button
 											variant="contained"
 											component="label"
+											color="primary"
 										>
 											Upload File
 											<input

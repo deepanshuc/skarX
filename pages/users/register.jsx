@@ -83,6 +83,7 @@ export default function Register() {
 			<form
 				onSubmit={handleSubmit(submitHandler)}
 				className={classes.form}
+				autoComplete="off"
 			>
 				<Typography component="h1" variant="h1">
 					Register

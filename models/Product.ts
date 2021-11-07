@@ -197,8 +197,6 @@ export async function addProduct(product: Product): Promise<Product | null> {
 	await db.disconnect();
 	//console.log('3 ');
 	return retProduct;
-	await db.disconnect();
-	return null;
 }
 
 // export async function setName(_id: string, name: string) {

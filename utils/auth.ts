@@ -13,7 +13,7 @@ function signToken(user: User): string {
 		},
 		process.env.JWT_SECRET || '',
 		{
-			expiresIn: '30d',
+			expiresIn: '2h',
 		}
 	);
 }
@@ -33,12 +33,14 @@ async function isAuth(
 			const token = authorization.slice(7, authorization.length);
 			jwt.verify(token, process.env.JWT_SECRET || '', (err, decode) => {
 				if (err || decode == null) {
-					res.status(401).send({ message: 'Invalid Token' });
+					res.status(401).send({
+						message: 'Invalid Token, Please Login Again',
+					});
 				} else {
 					req.user = decode;
 					if (decode.isAdmin === true) {
 						res.status(401).send({
-							message: 'Fun fact: Admins are not Gods',
+							message: 'Fun Fact: Admins Are Not Gods',
 						});
 						return;
 					}
@@ -46,7 +48,7 @@ async function isAuth(
 				}
 			});
 		} else {
-			res.status(401).send({ message: 'Token is not supplied' });
+			res.status(401).send({ message: 'Token Not Supplied' });
 		}
 	} catch (err) {
 		res.status(500).send({ message: 'Server Error' });
@@ -64,18 +66,20 @@ const isAdmin = async (
 			const token = authorization.slice(7, authorization.length);
 			jwt.verify(token, process.env.JWT_SECRET || '', (err, decode) => {
 				if (err || decode == null) {
-					res.status(401).send({ message: 'Invalid Token' });
+					res.status(401).send({
+						message: 'Invalid Token, Please Login Again',
+					});
 				} else {
 					req.user = decode;
 					if (decode.isAdmin !== true) {
-						res.status(401).send({ message: 'User is not Admin' });
+						res.status(401).send({ message: 'User Is Not Admin' });
 						return;
 					}
 					next();
 				}
 			});
 		} else {
-			res.status(401).send({ message: 'User is not admin' });
+			res.status(401).send({ message: 'User Is Not Admin' });
 		}
 	} catch (err) {
 		res.status(500).send({ message: 'Server Error' });
@@ -91,7 +95,7 @@ const isSeller = async (
 		if (req.user != null && req.user.isSeller === true) {
 			next();
 		} else {
-			res.status(401).send({ message: 'User is not seller' });
+			res.status(401).send({ message: 'User Is Not Seller' });
 		}
 	} catch (err) {
 		res.status(500).send({ message: 'Server Error' });
